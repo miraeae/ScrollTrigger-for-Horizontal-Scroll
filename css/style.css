@@ -1,1 +1,29 @@
 @charset "UTF-8";
+
+.work {height:150vh; padding-top:50vh; overflow: hidden; background:#000; font-family: pretendard, sans-serif;}
+.work ul{display: flex; padding:3% 30%; box-sizing: border-box;}
+.work ul li{flex-shrink:0 !important; width:700px; padding:100px; box-sizing: border-box;}
+/* padding 으로 준 이유는 가로스크롤 길이가 li의 높이만 인식해서 margin으로 주면 포함이 안된다.
+만약 margin으로 줄 경우 리스트가 중간에 끝남*/
+/* flex-shrink 기본값이 1이기 때문에 속성을 정의하지않아도 아이템이 자동 축소가 적용됨
+ 너비 축소 방지하려면 반드시 flex-shrink:0을 선언해야함*/
+.work ul li a{display: block; width:100%; position: relative;}
+.work ul li a .imgBox{position: relative;}
+.work ul li a .imgBox img{width:100%;}
+.work ul li a .textBox{position: absolute; left:0; bottom:10%;} /*text-shadow:2px 2px 10px rgba(0,0,0,0.3);*/
+.work ul li a .textBox .title{font-size:3em; line-height: 1.2; font-weight: 500; letter-spacing: -0.05em; color:#fff;}
+.work ul li a .textBox .text{font-size:1.2em; line-height: 1.2; letter-spacing: -0.05em; color:#fff;}
+
+/*hover*/
+/*화살표와 테두리*/
+.work ul li a .imgBox:before{content:''; width:140px; height:140px; border-radius:100%; background: url(../images/arrow.png) no-repeat center/20px; position: absolute; top:50%; left:50%; transform: translate(-50%, -50%) rotate(45deg); z-index: 2; transition:all .3s; opacity: 0;}
+/*스핀이미지*/
+.work ul li a .imgBox:after{content:''; width:0%; height: 0%; border-radius: 100%;
+background:#fff url(../images/viewmore.png) no-repeat center/130px; position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); z-index: 1; transition:all .3s; animation:spin 10s linear infinite; opacity: 0;}
+@keyframes spin {
+    0% {transform: translate(-50%, -50%) rotate(0deg);}
+    100% {transform: translate(-50%, -50%) rotate(360deg);}
+}
+.work ul li a .imgBox:hover img{filter: brightness(50%); transition: .3s;}
+.work ul li a .imgBox:hover:before{opacity: 1;}
+.work ul li a .imgBox:hover:after{opacity: 1; width:140px; height: 140px;}
