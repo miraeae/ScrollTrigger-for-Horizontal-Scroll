@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.work {height:150vh; padding-top:50vh; overflow: hidden; background:#000; font-family: pretendard, sans-serif;}
+.work {height:200vh; overflow: hidden; background:#000; font-family: pretendard, sans-serif;}
 .work ul{display: flex; padding:3% 30%; box-sizing: border-box;}
 .work ul li{flex-shrink:0 !important; width:700px; padding:100px; box-sizing: border-box;}
 /* padding 으로 준 이유는 가로스크롤 길이가 li의 높이만 인식해서 margin으로 주면 포함이 안된다.
