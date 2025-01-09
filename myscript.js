@@ -18,9 +18,38 @@ $(function(){
                     end: '300%', //뷰포트높이의 300%이며, 숫자가 클수록 느려짐
                     markers:true
                 }
+            });
+
+            //.imgBox 모션
+            gsap.utils.toArray('.imgBox').forEach(function(imgBox){
+                //imgBox 커지는 애니메이션 - 화면 오른쪽에서 커지기 시작>중앙에서 종료
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: imgBox,
+                        containerAnimation: scrollTween, //가로스크롤에서 트리거시점을 잡아주는 옵션
+                        start: 'center right', //가로스크롤이라 right=bottom
+                        end: 'center center',
+                        scrub:true,
+                        markers: true
+                    }
+                })
+                //to애니메이션 지정
+                .to(imgBox, {'clip-path':'inset(0%)',ease:'none', duration:1}, 0)
+                
+
+                //imgBox 작아지는 애니메이션 - 화면 중앙에서 작아지기 시작>왼쪽에서 종료
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: imgBox,
+                        containerAnimation: scrollTween, //가로스크롤에서 트리거시점을 잡아주는 옵션
+                        start: 'center center',
+                        end: 'center left',
+                        scrub:true,
+                        markers: true
+                    }
+                })
+                .to(imgBox, {'clip-path':'inset(30%)',ease:'none', duration:1}, 0)
             })
         }
-
     })
-
 })
