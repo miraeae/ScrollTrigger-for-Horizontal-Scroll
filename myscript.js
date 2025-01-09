@@ -49,7 +49,37 @@ $(function(){
                     }
                 })
                 .to(imgBox, {'clip-path':'inset(30%)',ease:'none', duration:1}, 0)
-            })
+            }); //.imgBox 모션 end
+
+
+            //.textBox 모션
+            gsap.utils.toArray('.textBox').forEach(function(textBox){
+                //textBox 커지는 애니메이션 - 화면 오른쪽에서 커지기 시작>중앙에서 종료
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: textBox,
+                        containerAnimation: scrollTween,
+                        start: 'center 70%', //imgbox보다 늦게 시작?
+                        end: 'center 40%',
+                        scrub:true,
+                        markers: true
+                    }
+                })
+                .to(textBox, {'opacity':'1','x':-100,}, 0)
+
+                //textBox 작아지는 애니메이션 - 화면 중앙에서 작아지기 시작>왼쪽에서 종료
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: textBox,
+                        containerAnimation: scrollTween,
+                        start: 'center 30%',
+                        end: 'center 20%',
+                        scrub:true,
+                        markers: true
+                    }
+                })
+                .to(textBox, {'opacity':'0'}, 0)
+            }); //.textBox 모션 end
         }
     })
 })
