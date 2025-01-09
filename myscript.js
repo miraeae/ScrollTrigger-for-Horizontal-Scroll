@@ -12,9 +12,9 @@ $(function(){
                 scrollTrigger: {
                     trigger:'.work',
                     pin: true, //활성 상태에서 트리거 요소 고정
-                    pinSpacing: false,
+                    //pinSpacing: false,
                     scrub:1,
-                    start:'center, center',
+                    start:'center center',
                     end: '300%', //뷰포트높이의 300%이며, 숫자가 클수록 느려짐
                     markers:true
                 }
